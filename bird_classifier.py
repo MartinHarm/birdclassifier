@@ -105,15 +105,16 @@ def convert_image_to_tensor(image):
     return image_tensor
 
 
-def print_results(birds_names_with_results_ordered, index):
+def print_results(birds_names_with_results_ordered, index, img_url):
     """Prints out organized top three results for given image.
 
     Args:
         birds_names_with_results_ordered: List of bird names and scores(ordered).
         index: Image index.
+        img_url: URL of the currently processed image
 
     """
-    print('Run: %s' % int(index + 1))
+    print('Run: %s' % int(index + 1), img_url)
     for i in range(1, 4):
         bird_name = birds_names_with_results_ordered[i * (-1)][1]['name']
         bird_score = birds_names_with_results_ordered[i * (-1)][1]['score']
@@ -145,7 +146,7 @@ def main():
     for index, image_url in enumerate(IMAGE_URLS):
         model_result = get_model_result(image_url)
         if model_result:
-            print_results(model_result, index)
+            print_results(model_result, index, image_url)
 
 
 if __name__ == "__main__":
