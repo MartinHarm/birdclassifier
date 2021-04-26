@@ -1,50 +1,27 @@
-# Test Task
+# BirdClassifier
 
-Many photographers have been taking images of birds and wondering what kind of bird it actually is. 
+Sample output
 
-A bunch of data scientists have been working on a model to help them out. 
+Run: 1
+1.Match:  Phalacrocorax varius varius with score: 0.8430763483047485
+2.Match:  Phalacrocorax varius with score: 0.11654692143201828
+3.Match:  Microcarbo melanoleucos with score: 0.024331536144018173
+Run: 2
+1.Match:  Galerida cristata with score: 0.8428873419761658
+2.Match:  Alauda arvensis with score: 0.08378682285547256
+3.Match:  Eremophila alpestris with score: 0.018995527178049088
+Run: 3
+1.Match:  Eumomota superciliosa with score: 0.4127245247364044
+2.Match:  Momotus coeruliceps with score: 0.05253968387842178
+3.Match:  Momotus lessonii with score: 0.048381611704826355
+Run: 4
+1.Match:  Aulacorhynchus prasinus with score: 0.8074852824211121
+2.Match:  Cyanocorax yncas with score: 0.11162681132555008
+3.Match:  Chlorophanes spiza with score: 0.014210059307515621
+Run: 5
+1.Match:  Erithacus rubecula with score: 0.8382053971290588
+2.Match:  Ixoreus naevius with score: 0.0030795016791671515
+3.Match:  Setophaga tigrina with score: 0.002611359115689993
+Time spent: 2.638029098510742
 
-While the model\* is performing well a lot of corners were cut to get this model to production\** and the service could certainly use some love from a software engineer.
-
-Your task is to:
-* Improve service architecture
-* Improve service performance
-* Improve service maintainability, extendability and testability
-
-You can change all parts of the code as you see fit, however:
-* You are not expected to work on ML model performance
-* Model and data have to be fetched online (instead of downloading it to your local machine)
-
-By the end of this task we would like to see, what is a good looking code in your opinion and how much can you optimise latency.
-
-Feel free to play around with the code as much as you like, but in the end we want to see:
-* Your vision of nice code
-* Code running time including images and model downloading and model inference
-* Top 3 results from the model's output per image
-* Proper logging for essential and debug info if necessary
-* Finished work has to be pushed to github and shared with @swoc and @hrastas
-
-Bonus
-* Unit tests with Mocked images and model data (possible to run without internet)
-* Analyse the bottlenecks in your implementation, and report options for improving upon them.
-* Implement your solution using Docker and Kubernetes for the infrastructure layer. The configuration should scale out: adding machines should reduce latency
-
-
-# Local setup
-1) Install Python 3
-2) Install requirements `pip install -r requirements.txt`
-3) Run the code `python classifier.py
-
-gl;hf
-
-\* The model:
-The sample model is taken from Tensorflow Hub:
-https://tfhub.dev/google/aiy/vision/classifier/birds_V1/1
-
-The labels for model outputs can be found here:
-https://www.gstatic.com/aihub/tfhub/labelmaps/aiy_birds_V1_labelmap.csv
-
-The model has been verified to run with TensorFlow 2.
-
-\** Production: The code was deployed as a python service using Docker with Kubernetes for the infrastructure layer.
-
+Process finished with exit code 0
