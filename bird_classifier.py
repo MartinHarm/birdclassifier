@@ -119,6 +119,7 @@ def print_results(birds_names_with_results_ordered, index, img_url):
         bird_name = birds_names_with_results_ordered[i * (-1)][1]['name']
         bird_score = birds_names_with_results_ordered[i * (-1)][1]['score']
         print(f"{i}.Match:  {bird_name} with score: {bird_score}")
+    print('\n')
 
 
 def get_model_result(image_url):
