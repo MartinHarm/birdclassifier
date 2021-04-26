@@ -1,7 +1,18 @@
 # BirdClassifier
-
-Sample output
-
+#Requirements
+| Requirement | Version |
+| --- | --- |
+| `tensorflow` | 2.5.0rc0 |
+| `tensorflow_hub` | 0.11.0 |
+| `opencv-python` | 4.5.1.48 |
+| `numpy` | 1.19.3 |
+#Run
+| Command | Description |
+| --- | --- |
+| `py bird_classifier.py` | Start the requests for given images |
+| `py bird_classifier_test.py` | Run tests |
+#Sample output
+```
 Run: 1
 1.Match:  Phalacrocorax varius varius with score: 0.8430763483047485
 2.Match:  Phalacrocorax varius with score: 0.11654692143201828
@@ -25,3 +36,4 @@ Run: 5
 Time spent: 2.638029098510742
 
 Process finished with exit code 0
+```
