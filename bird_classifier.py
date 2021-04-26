@@ -27,12 +27,29 @@ IMAGE_URLS = [
 
 
 def load_model():
-    """Loads kerasLayer model"""
+    """Loads Keraslayer model for birds_v1.
+
+    Returns:
+        KerasLayer.
+
+    """
     return hub.KerasLayer(BIRD_MODEL_URL)
 
 
 def load_image(image_url):
-    """Retrieves and scale image to be used as tensor"""
+    """Retrieves and scales image to be used as tensor.
+
+    Args:
+        image_url: URL for the image to be processed.
+
+    Throws:
+        HTTPError: when server connection times out
+        URLError: when url malformed
+
+    Returns:
+        image if successfully loaded and [] if had exceptions.
+
+    """
     try:
         image_get_response = urllib.request.urlopen(image_url)
         image_array = np.asarray(bytearray(image_get_response.read()), dtype=np.uint8)
@@ -51,7 +68,12 @@ def load_image(image_url):
 
 
 def load_and_cleanup_labels():
-    """Retrieves and cleanup bird species labels"""
+    """Retrieves and cleans up bird species labels.
+
+    Returns:
+        Bird species
+
+    """
     bird_labels_raw = urllib.request.urlopen(BIRD_LABELS_URL).readlines()
     bird_labels_lines = [line.decode('utf-8').replace('\n', '') for line in bird_labels_raw]
     bird_labels_lines.pop(0)  # remove header (id, name)
@@ -69,14 +91,28 @@ bird_labels = load_and_cleanup_labels()
 
 
 def convert_image_to_tensor(image):
-    """Converts image bytes to img_tensor"""
+    """Converts image(bytes) to img_tensor.
+
+    Args:
+        img: Image to be converted.
+
+    Returns:
+        Image tensor
+
+    """
     image_tensor = tf.convert_to_tensor(image, dtype=tf.float32)
     image_tensor = tf.expand_dims(image_tensor, 0)
     return image_tensor
 
 
 def print_results(birds_names_with_results_ordered, index):
-    """Prints out organized top three results"""
+    """Prints out organized top three results for given image.
+
+    Args:
+        birds_names_with_results_ordered: List of bird names and scores(ordered).
+        index: Image index.
+
+    """
     print('Run: %s' % int(index + 1))
     for i in range(1, 4):
         bird_name = birds_names_with_results_ordered[i * (-1)][1]['name']
@@ -85,7 +121,15 @@ def print_results(birds_names_with_results_ordered, index):
 
 
 def get_model_result(image_url):
-    """Returns the result of bird species sorted by their score"""
+    """Calls bird model tensor and sorts results by score.
+
+    Args:
+        image_url: URL of the image to be processed.
+
+    Returns:
+        Result of bird species sorted by their score.
+
+    """
     image = load_image(image_url)
     if not len(image):
         return
